@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lora Webb — Technical Writer & Documentation Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #d4006e;
+    --pink-light: #ff4da6;
+    --pink-pale: #fff0f7;
+    --pink-mid: #ffd6ec;
+    --dark: #1a0a12;
+    --charcoal: #2d1a24;
+    --muted: #7a5a6a;
+    --white: #fffbfd;
+    --border: #f0c4dc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--white);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: var(--dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 10%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(212,0,110,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,0,110,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--pink-light);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards 0.2s;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(56px, 8vw, 110px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.0;
+    margin-bottom: 8px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.4s;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--pink-light);
+  }
+
+  .hero-sub {
+    font-size: clamp(16px, 2vw, 22px);
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    margin-top: 20px;
+    max-width: 560px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.6s;
+  }
+
+  .hero-line {
+    width: 60px;
+    height: 2px;
+    background: var(--pink);
+    margin: 32px 0;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.7s;
+  }
+
+  .hero-contact {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 0.9s;
+  }
+
+  .hero-contact a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(212,0,110,0.4);
+    padding-bottom: 2px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .hero-contact a:hover {
+    color: var(--pink-light);
+    border-color: var(--pink-light);
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 10%;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards 1.2s;
+  }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    background: var(--pink);
+    padding: 60px 10%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .about-strip h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .about-strip h2 em {
+    font-style: italic;
+    opacity: 0.7;
+  }
+
+  .about-strip p {
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  /* STATS */
+  .stats {
+    background: var(--pink-pale);
+    padding: 60px 10%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--pink);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 8px;
+    font-weight: 500;
+  }
+
+  /* SAMPLES SECTION */
+  .samples {
+    padding: 100px 10%;
+    background: var(--white);
+  }
+
+  .section-header {
+    margin-bottom: 60px;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 16px;
+  }
+
+  .section-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 48px;
+    color: var(--dark);
+    line-height: 1.1;
+  }
+
+  .samples-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+  }
+
+  .sample-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 32px;
+    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    position: relative;
+    overflow: hidden;
+    background: var(--white);
+  }
+
+  .sample-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--pink);
+    transform: scaleY(0);
+    transition: transform 0.2s;
+    transform-origin: bottom;
+  }
+
+  .sample-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(212,0,110,0.1);
+    border-color: var(--pink-mid);
+  }
+
+  .sample-card:hover::before {
+    transform: scaleY(1);
+  }
+
+  .sample-type {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 12px;
+  }
+
+  .sample-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--dark);
+    margin-bottom: 12px;
+    line-height: 1.3;
+  }
+
+  .sample-card p {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  .sample-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--pink);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: gap 0.2s;
+  }
+
+  .sample-link:hover {
+    gap: 12px;
+  }
+
+  .sample-link::after {
+    content: '→';
+  }
+
+  /* FEATURED CARD */
+  .sample-card.featured {
+    background: var(--dark);
+    border-color: transparent;
+    grid-column: span 2;
+  }
+
+  .sample-card.featured .sample-type {
+    color: var(--pink-light);
+  }
+
+  .sample-card.featured h3 {
+    color: var(--white);
+    font-size: 28px;
+  }
+
+  .sample-card.featured p {
+    color: rgba(255,255,255,0.6);
+  }
+
+  .sample-card.featured .sample-link {
+    color: var(--pink-light);
+  }
+
+  .sample-card.featured::before {
+    background: var(--pink-light);
+  }
+
+  /* REPORT SECTION */
+  .report-section {
+    background: var(--pink-pale);
+    padding: 80px 10%;
+    border-top: 1px solid var(--border);
+  }
+
+  .report-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .report-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  .report-inner p {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .report-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 40px;
+    position: relative;
+  }
+
+  .report-card::after {
+    content: 'OFFICIAL REPORT';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--pink);
+    font-weight: 500;
+  }
+
+  .report-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--dark);
+    margin-bottom: 8px;
+  }
+
+  .report-card .org {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+
+  .report-card ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .report-card ul li {
+    font-size: 13px;
+    color: var(--muted);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .report-card ul li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--pink);
+    flex-shrink: 0;
+  }
+
+  .report-card ul li:last-child {
+    border-bottom: none;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark);
+    padding: 60px 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 20px;
+  }
+
+  footer .footer-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    color: var(--white);
+  }
+
+  footer .footer-name em {
+    color: var(--pink-light);
+    font-style: italic;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .footer-links a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover {
+    color: var(--pink-light);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .about-strip { grid-template-columns: 1fr; gap: 32px; }
+    .stats { grid-template-columns: 1fr; }
+    .report-inner { grid-template-columns: 1fr; }
+    .sample-card.featured { grid-column: span 1; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-tag">Portfolio — Technical Writer & Documentation Specialist</p>
+  <h1>Lora<br><em>Webb</em></h1>
+  <div class="hero-line"></div>
+  <p class="hero-sub">Making complex information human. Ten years translating hard things into clear, usable words — across classrooms, communities, and platforms with 1.5 million users.</p>
+  <div class="hero-contact">
+    <a href="mailto:lora.o.webb@gmail.com">lora.o.webb@gmail.com</a>
+    <a href="https://www.linkedin.com/in/lorawebb" target="_blank">LinkedIn</a>
+    <a href="tel:8062808006">806.280.8006</a>
+  </div>
+  <p class="scroll-hint">Scroll to explore</p>
+</section>
+
+<!-- ABOUT STRIP -->
+<section class="about-strip">
+  <h2>I find where<br>information<br><em>breaks down.</em><br>Then I fix it.</h2>
+  <p>Growing up in East Africa teaches you to communicate across every kind of barrier — or nothing gets done. That instinct has shaped everything since: a decade in education, two years in public health, and eight years building documentation systems for a gaming platform that grew from zero to 1.5 million users. In every context, the job is the same: take something complicated and make it genuinely useful to the person in front of you.</p>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stat">
+    <div class="stat-number">1.5M+</div>
+    <div class="stat-label">Platform users served</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">10+</div>
+    <div class="stat-label">Years writing for real audiences</div>
+  </div>
+  <div class="stat">
+    <div class="stat-number">11</div>
+    <div class="stat-label">Support specialists trained</div>
+  </div>
+</section>
+
+<!-- WRITING SAMPLES -->
+<section class="samples">
+  <div class="section-header">
+    <p class="section-tag">Writing Samples</p>
+    <h2>Documentation<br>that actually helps.</h2>
+  </div>
+
+  <div class="samples-grid">
+
+    <div class="sample-card featured">
+      <p class="sample-type">Featured — Step-by-Step User Guide</p>
+      <h3>How to Use Slash Commands</h3>
+      <p>A comprehensive walkthrough for users of all technical levels — covering multiple input methods, edge cases, platform differences (mobile vs. PC), and troubleshooting. Written for a community of 1.5M+ users, this guide anticipates confusion before it happens and resolves it cleanly.</p>
+      <a href="https://warmind.io/article/slash-commands" target="_blank" class="sample-link">Read the article</a>
+    </div>
+
+    <div class="sample-card">
+      <p class="sample-type">Onboarding Documentation</p>
+      <h3>Registration Guide</h3>
+      <p>First-touch documentation for new users — the most critical piece of any platform's help library. Clear, welcoming, and designed to get users up and running without friction.</p>
+      <a href="https://warmind.io/article/registration" target="_blank" class="sample-link">Read the article</a>
+    </div>
+
+    <div class="sample-card">
+      <p class="sample-type">Troubleshooting Guide</p>
+      <h3>Getting a Blank Reply to Commands</h3>
+      <p>Troubleshooting documentation requires a specific skill: diagnosing the problem from the user's perspective, not the developer's. This article walks users through the most common causes and fixes without overwhelming them.</p>
+      <a href="https://warmind.io/article/getting-a-blank-reply-to-commands" target="_blank" class="sample-link">Read the article</a>
+    </div>
+
+    <div class="sample-card">
+      <p class="sample-type">Feature Documentation</p>
+      <h3>Leaderboards & the Rank Command</h3>
+      <p>Feature explainer documentation covering a complex, data-heavy feature. Demonstrates the ability to make analytical tools approachable for a general audience.</p>
+      <a href="https://warmind.io/article/leaderboards-and-the-rank-command" target="_blank" class="sample-link">Read the article</a>
+    </div>
+
+    <div class="sample-card">
+      <p class="sample-type">Permissions & Admin Documentation</p>
+      <h3>Who Does Charlemagne Consider an Administrator?</h3>
+      <p>Edge-case documentation for a nuanced permission system — the kind of question that floods support channels when left unanswered. Precise, direct, and written to close the loop.</p>
+      <a href="https://warmind.io/article/who-does-charlemagne-consider-an-administrator" target="_blank" class="sample-link">Read the article</a>
+    </div>
+
+    <div class="sample-card">
+      <p class="sample-type">Video Documentation</p>
+      <h3>Platform Tutorial Video</h3>
+      <p>Multimedia documentation demonstrating the ability to translate written guides into engaging video walkthroughs. Scripted, narrated, and produced independently for a platform-wide audience.</p>
+      <a href="https://www.youtube.com/watch?v=rkClwQjaOKs&t=674s" target="_blank" class="sample-link">Watch the video</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- REPORT SECTION -->
+<section class="report-section">
+  <div class="report-inner">
+    <div>
+      <h2>Formal & Institutional Writing</h2>
+      <p>Technical writing isn't always user-facing. Equally important is the ability to write for institutional audiences — program evaluators, elected officials, state and federal stakeholders — with precision and clarity.</p>
+      <p>The CEA Annual Achievement Report below demonstrates formal report writing, program evaluation documentation, and outcome reporting for a federally funded public health program.</p>
+    </div>
+    <div class="report-card">
+      <h4>CEA Annual Achievement Report</h4>
+      <p class="org">Texas A&M AgriLife Extension · Taylor County · 2024</p>
+      <ul>
+        <li>In-depth program planning and needs assessment</li>
+        <li>Multi-site program implementation documentation</li>
+        <li>Evaluation methodology and outcome reporting</li>
+        <li>Stakeholder and partner coordination records</li>
+        <li>Professional development and compliance reporting</li>
+        <li>Recipient: Exemplary Excellence Award, BLT Program Director</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Lora <em>Webb</em></div>
+  <div class="footer-links">
+    <a href="mailto:lora.o.webb@gmail.com">lora.o.webb@gmail.com</a>
+    <a href="https://www.linkedin.com/in/lorawebb" target="_blank">LinkedIn</a>
+    <a href="tel:8062808006">806.280.8006</a>
+  </div>
+</footer>
+
+</body>
+</html>
