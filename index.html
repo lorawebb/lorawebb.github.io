@@ -1,622 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lora Webb — Technical Writer & Knowledge Management Specialist</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Lora Webb — Customer Education Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --pink: #d4006e;
-    --pink-light: #ff4da6;
-    --pink-pale: #fff0f7;
-    --pink-mid: #ffd6ec;
-    --dark: #1a0a12;
-    --charcoal: #2d1a24;
-    --muted: #7a5a6a;
-    --white: #fffbfd;
-    --border: #f0c4dc;
+  :root{
+    --plum:#1a0a12;
+    --pink:#d4006e;
+    --pink-bright:#ff4da6;
+    --pale:#fff0f7;
+    --mauve:#7a5a6a;
+    --white:#fffbfd;
+    --display:"Playfair Display", Georgia, serif;
+    --body:"DM Sans", system-ui, sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:var(--body);
+    color:var(--plum);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; }
+  .eyebrow{
+    font-family:var(--body);
+    font-weight:700;
+    font-size:.72rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+  }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 6vw; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:var(--plum);
+    color:var(--white);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+    padding:8vh 6vw;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    top:-20%; right:-10%;
+    width:70vw; height:70vw;
+    background:radial-gradient(circle, rgba(212,0,110,.55) 0%, rgba(212,0,110,.12) 38%, transparent 65%);
+    pointer-events:none;
+  }
+  .hero-inner{ position:relative; z-index:1; max-width:760px; }
+  .hero .eyebrow{ color:var(--pink-bright); margin-bottom:2.2rem; }
+  .hero h1{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:clamp(3.4rem,9vw,7rem);
+    line-height:.95;
+    letter-spacing:-.01em;
+  }
+  .hero h1 .last{ display:block; font-style:italic; color:var(--pink-bright); }
+  .hero .accent-line{ width:64px; height:3px; background:var(--pink); margin:1.8rem 0 2.4rem; }
+  .hero p.lede{
+    font-size:clamp(1.05rem,2.2vw,1.4rem);
+    color:rgba(255,251,253,.72);
+    max-width:34ch;
+    margin-bottom:1.6rem;
+  }
+  .hero .links a{
+    text-decoration:none;
+    font-size:.95rem;
+    color:var(--white);
+    border-bottom:1px solid rgba(255,77,166,.5);
+    padding-bottom:2px;
+    margin-right:1.6rem;
+    transition:border-color .2s, color .2s;
+  }
+  .hero .links a:hover{ color:var(--pink-bright); border-color:var(--pink-bright); }
+  .scroll-cue{
+    position:absolute; bottom:5vh; left:6vw; z-index:1;
+    color:rgba(255,251,253,.4);
+    font-size:.7rem; letter-spacing:.22em; text-transform:uppercase;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* ---------- THESIS BAND ---------- */
+  .thesis{ background:var(--pink); color:var(--white); padding:5.5rem 0; }
+  .thesis-grid{ display:grid; grid-template-columns:1.05fr 1fr; gap:4rem; align-items:start; }
+  .thesis h2{
+    font-family:var(--display);
+    font-weight:700;
+    font-size:clamp(2.1rem,4.5vw,3.2rem);
+    line-height:1.08;
+  }
+  .thesis h2 em{ font-weight:400; color:rgba(255,251,253,.82); }
+  .thesis p{ color:rgba(255,251,253,.92); font-size:1.05rem; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--white);
-    color: var(--dark);
-    overflow-x: hidden;
+  /* ---------- STATS ---------- */
+  .stats{ background:var(--pale); padding:4rem 0; }
+  .stats-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2rem; text-align:center; }
+  .stat .num{
+    font-family:var(--display); font-weight:900; color:var(--pink);
+    font-size:clamp(2.6rem,5vw,3.4rem); line-height:1;
+  }
+  .stat .lbl{
+    display:block; margin-top:.7rem; color:var(--mauve);
+    font-size:.72rem; letter-spacing:.16em; text-transform:uppercase; font-weight:500;
   }
 
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    background: var(--dark);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 80px 10%;
-    position: relative;
-    overflow: hidden;
+  /* ---------- SAMPLES ---------- */
+  .samples{ background:var(--white); padding:6rem 0 5rem; }
+  .samples .eyebrow{ color:var(--pink); }
+  .samples h2{
+    font-family:var(--display); font-weight:900;
+    font-size:clamp(2.3rem,5vw,3.4rem); line-height:1.05;
+    margin:.6rem 0 3rem;
   }
+  .card-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+  .card{
+    border:1px solid rgba(122,90,106,.22);
+    border-radius:10px;
+    padding:1.8rem;
+    display:flex; flex-direction:column;
+    background:var(--white);
+    transition:transform .2s, box-shadow .2s, border-color .2s;
+  }
+  .card:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(212,0,110,.10); border-color:rgba(212,0,110,.35); }
+  .card .kicker{ color:var(--mauve); font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; font-weight:700; margin-bottom:1rem; }
+  .card h3{ font-family:var(--display); font-weight:700; font-size:1.3rem; line-height:1.2; margin-bottom:.7rem; }
+  .card p{ color:var(--mauve); font-size:.92rem; flex:1; }
+  .card .read{ margin-top:1.3rem; color:var(--pink); font-weight:700; font-size:.85rem; letter-spacing:.04em; text-decoration:none; }
+  .card .read:hover{ color:var(--pink-bright); }
+  .card.featured{ background:var(--plum); border-color:var(--plum); color:var(--white); }
+  .card.featured .kicker{ color:var(--pink-bright); }
+  .card.featured p{ color:rgba(255,251,253,.7); }
+  .card.featured .read{ color:var(--pink-bright); }
 
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -200px;
-    right: -200px;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, rgba(212,0,110,0.25) 0%, transparent 70%);
-    pointer-events: none;
-  }
+  /* ---------- OUTCOMES ---------- */
+  .outcomes{ background:var(--pale); padding:6rem 0; }
+  .out-grid{ display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+  .outcomes h2{ font-family:var(--display); font-weight:900; font-size:clamp(2rem,4.5vw,3rem); line-height:1.08; margin-bottom:1.4rem; }
+  .outcomes .body p{ color:var(--mauve); margin-bottom:1rem; max-width:46ch; }
+  .report-card{ background:var(--white); border:1px solid rgba(122,90,106,.22); border-radius:12px; padding:2.2rem; }
+  .report-card .eyebrow{ color:var(--pink); display:block; text-align:right; margin-bottom:1.2rem; }
+  .report-card h3{ font-family:var(--display); font-weight:700; font-size:1.5rem; }
+  .report-card .sub{ color:var(--mauve); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; margin:.4rem 0 1.4rem; }
+  .report-card ul{ list-style:none; }
+  .report-card li{ padding:.7rem 0; border-top:1px solid rgba(122,90,106,.16); font-size:.93rem; color:var(--plum); }
+  .report-card li:first-child{ border-top:none; }
+  .report-card .view{ display:inline-block; margin-top:1.4rem; color:var(--pink); font-weight:700; font-size:.9rem; text-decoration:none; }
+  .report-card .view:hover{ color:var(--pink-bright); }
 
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -100px;
-    left: -100px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(212,0,110,0.1) 0%, transparent 70%);
-    pointer-events: none;
-  }
+  /* ---------- FOOTER ---------- */
+  .foot{ background:var(--plum); color:var(--white); padding:4.5rem 0; }
+  .foot .name{ font-family:var(--display); font-weight:900; font-size:clamp(2.4rem,6vw,3.6rem); }
+  .foot .name em{ font-style:italic; color:var(--pink-bright); }
+  .foot .links{ margin-top:1.4rem; display:flex; gap:1.6rem; flex-wrap:wrap; }
+  .foot .links a{ color:rgba(255,251,253,.8); text-decoration:none; font-size:.95rem; border-bottom:1px solid rgba(255,77,166,.4); padding-bottom:2px; }
+  .foot .links a:hover{ color:var(--pink-bright); }
 
-  .hero-tag {
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--pink-light);
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: fadeUp 0.6s ease forwards 0.2s;
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:820px){
+    .thesis-grid,.out-grid{ grid-template-columns:1fr; gap:2rem; }
+    .stats-grid{ grid-template-columns:1fr; gap:2.4rem; }
+    .card-grid{ grid-template-columns:1fr; }
   }
-
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(56px, 8vw, 110px);
-    font-weight: 700;
-    color: var(--white);
-    line-height: 1.0;
-    margin-bottom: 8px;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.4s;
+  @media (prefers-reduced-motion:reduce){
+    *{ transition:none !important; scroll-behavior:auto !important; }
   }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--pink-light);
-  }
-
-  .hero-sub {
-    font-size: clamp(16px, 2vw, 22px);
-    color: rgba(255,255,255,0.5);
-    font-weight: 300;
-    margin-top: 20px;
-    max-width: 560px;
-    line-height: 1.6;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.6s;
-  }
-
-  .hero-line {
-    width: 60px;
-    height: 2px;
-    background: var(--pink);
-    margin: 32px 0;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.7s;
-  }
-
-  .hero-contact {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 0.9s;
-  }
-
-  .hero-contact a {
-    color: rgba(255,255,255,0.7);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 1px;
-    border-bottom: 1px solid rgba(212,0,110,0.4);
-    padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
-
-  .hero-contact a:hover {
-    color: var(--pink-light);
-    border-color: var(--pink-light);
-  }
-
-  .scroll-hint {
-    position: absolute;
-    bottom: 40px;
-    left: 10%;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.3);
-    opacity: 0;
-    animation: fadeUp 0.7s ease forwards 1.2s;
-  }
-
-  /* ABOUT STRIP */
-  .about-strip {
-    background: var(--pink);
-    padding: 60px 10%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-  }
-
-  .about-strip h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    color: var(--white);
-    line-height: 1.2;
-  }
-
-  .about-strip h2 em {
-    font-style: italic;
-    opacity: 0.7;
-  }
-
-  .about-strip p {
-    color: rgba(255,255,255,0.85);
-    font-size: 16px;
-    line-height: 1.8;
-    font-weight: 300;
-  }
-
-  /* STATS */
-  .stats {
-    background: var(--pink-pale);
-    padding: 60px 10%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .stat {
-    text-align: center;
-  }
-
-  .stat-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 56px;
-    font-weight: 700;
-    color: var(--pink);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 13px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 8px;
-    font-weight: 500;
-  }
-
-  /* SAMPLES SECTION */
-  .samples {
-    padding: 100px 10%;
-    background: var(--white);
-  }
-
-  .section-header {
-    margin-bottom: 60px;
-  }
-
-  .section-tag {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--pink);
-    margin-bottom: 16px;
-  }
-
-  .section-header h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    color: var(--dark);
-    line-height: 1.1;
-  }
-
-  .samples-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 28px;
-  }
-
-  .sample-card {
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 32px;
-    transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-    position: relative;
-    overflow: hidden;
-    background: var(--white);
-  }
-
-  .sample-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 3px;
-    height: 100%;
-    background: var(--pink);
-    transform: scaleY(0);
-    transition: transform 0.2s;
-    transform-origin: bottom;
-  }
-
-  .sample-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(212,0,110,0.1);
-    border-color: var(--pink-mid);
-  }
-
-  .sample-card:hover::before {
-    transform: scaleY(1);
-  }
-
-  .sample-type {
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--pink);
-    margin-bottom: 12px;
-  }
-
-  .sample-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: var(--dark);
-    margin-bottom: 12px;
-    line-height: 1.3;
-  }
-
-  .sample-card p {
-    font-size: 14px;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 24px;
-    font-weight: 300;
-  }
-
-  .sample-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--pink);
-    text-decoration: none;
-    letter-spacing: 0.5px;
-    transition: gap 0.2s;
-  }
-
-  .sample-link:hover {
-    gap: 12px;
-  }
-
-  .sample-link::after {
-    content: '→';
-  }
-
-  /* FEATURED CARD */
-  .sample-card.featured {
-    background: var(--dark);
-    border-color: transparent;
-    grid-column: span 2;
-  }
-
-  .sample-card.featured .sample-type {
-    color: var(--pink-light);
-  }
-
-  .sample-card.featured h3 {
-    color: var(--white);
-    font-size: 28px;
-  }
-
-  .sample-card.featured p {
-    color: rgba(255,255,255,0.6);
-  }
-
-  .sample-card.featured .sample-link {
-    color: var(--pink-light);
-  }
-
-  .sample-card.featured::before {
-    background: var(--pink-light);
-  }
-
-  /* REPORT SECTION */
-  .report-section {
-    background: var(--pink-pale);
-    padding: 80px 10%;
-    border-top: 1px solid var(--border);
-  }
-
-  .report-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-
-  .report-inner h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    color: var(--dark);
-    line-height: 1.2;
-    margin-bottom: 20px;
-  }
-
-  .report-inner p {
-    color: var(--muted);
-    font-size: 15px;
-    line-height: 1.8;
-    font-weight: 300;
-    margin-bottom: 16px;
-  }
-
-  .report-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    padding: 40px;
-    position: relative;
-  }
-
-  .report-card::after {
-    content: 'OFFICIAL REPORT';
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 9px;
-    letter-spacing: 3px;
-    color: var(--pink);
-    font-weight: 500;
-  }
-
-  .report-card h4 {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    color: var(--dark);
-    margin-bottom: 8px;
-  }
-
-  .report-card .org {
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 20px;
-  }
-
-  .report-card ul {
-    list-style: none;
-    padding: 0;
-  }
-
-  .report-card ul li {
-    font-size: 13px;
-    color: var(--muted);
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-    font-weight: 300;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .report-card ul li::before {
-    content: '';
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--pink);
-    flex-shrink: 0;
-  }
-
-  .report-card ul li:last-child {
-    border-bottom: none;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--dark);
-    padding: 60px 10%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: gap;
-    gap: 20px;
-  }
-
-  footer .footer-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    color: var(--white);
-  }
-
-  footer .footer-name em {
-    color: var(--pink-light);
-    font-style: italic;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-
-  .footer-links a {
-    color: rgba(255,255,255,0.5);
-    text-decoration: none;
-    font-size: 13px;
-    transition: color 0.2s;
-  }
-
-  .footer-links a:hover {
-    color: var(--pink-light);
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
-    .about-strip { grid-template-columns: 1fr; gap: 32px; }
-    .stats { grid-template-columns: 1fr; }
-    .report-inner { grid-template-columns: 1fr; }
-    .sample-card.featured { grid-column: span 1; }
-    footer { flex-direction: column; align-items: flex-start; }
-  }
+  a:focus-visible{ outline:2px solid var(--pink-bright); outline-offset:3px; border-radius:2px; }
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <p class="hero-tag">Portfolio — Technical Writer & Knowledge Management Specialist</p>
-  <h1>Lora<br><em>Webb</em></h1>
-  <div class="hero-line"></div>
-  <p class="hero-sub">Making complex information human. Ten years translating hard things into clear, usable words — across classrooms, communities, and a platform serving 1.5 million users.</p>
-  <div class="hero-contact">
-    <a href="mailto:lora.o.webb@gmail.com">lora.o.webb@gmail.com</a>
-    <a href="https://www.linkedin.com/in/lora-webb" target="_blank">LinkedIn</a>
-  </div>
-  <p class="scroll-hint">Scroll to explore</p>
-</section>
-
-<!-- ABOUT STRIP -->
-<section class="about-strip">
-  <h2>I find where<br>information<br><em>breaks down.</em><br>Then I fix it.</h2>
-  <p>Growing up in East Africa teaches you to communicate across every kind of barrier — or nothing gets done. That instinct has shaped everything since: a decade in education, two years in public health, and nine years building documentation and knowledge systems for a gaming platform that grew from zero to 1.5 million users. In every context, the job is the same: take something complicated and make it genuinely useful to the person in front of you.</p>
-</section>
-
-<!-- STATS -->
-<section class="stats">
-  <div class="stat">
-    <div class="stat-number">1.5M+</div>
-    <div class="stat-label">Platform users served</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">10+</div>
-    <div class="stat-label">Years writing for real audiences</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">11</div>
-    <div class="stat-label">Support specialists trained</div>
-  </div>
-</section>
-
-<!-- WRITING SAMPLES -->
-<section class="samples">
-  <div class="section-header">
-    <p class="section-tag">Writing Samples</p>
-    <h2>Documentation<br>that actually helps.</h2>
-  </div>
-
-  <div class="samples-grid">
-
-    <div class="sample-card featured">
-      <p class="sample-type">Featured — Step-by-Step User Guide</p>
-      <h3>How to Use Slash Commands</h3>
-      <p>A comprehensive walkthrough for users of all technical levels — covering multiple input methods, edge cases, platform differences (mobile vs. PC), and troubleshooting. Written for a community of 1.5M+ users, this guide anticipates confusion before it happens and resolves it cleanly.</p>
-      <a href="https://warmind.io/article/slash-commands" target="_blank" class="sample-link">Read the article</a>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Portfolio — Customer Education · Knowledge Base · Documentation</div>
+      <h1>Lora<span class="last">Webb</span></h1>
+      <div class="accent-line"></div>
+      <p class="lede">Making complex information human. A decade turning hard things into clear, self-serve answers — across classrooms, communities, and a product serving 1.5 million users.</p>
+      <div class="links">
+        <a href="mailto:lora.o.webb@gmail.com">lora.o.webb@gmail.com</a>
+        <a href="https://www.linkedin.com/in/lora-webb" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
     </div>
+    <div class="scroll-cue">Scroll to explore</div>
+  </header>
 
-    <div class="sample-card">
-      <p class="sample-type">Onboarding Documentation</p>
-      <h3>Registration Guide</h3>
-      <p>First-touch documentation for new users — the most critical piece of any platform's knowledge base. Clear, welcoming, and designed to get users up and running without friction.</p>
-      <a href="https://warmind.io/article/registration" target="_blank" class="sample-link">Read the article</a>
+  <!-- THESIS -->
+  <section class="thesis">
+    <div class="wrap thesis-grid">
+      <h2>I find where information <em>breaks down.</em> Then I fix it.</h2>
+      <p>The job has always been the same, whatever the room: take something complicated and make it genuinely useful to the person who needs it. A decade in education, two years in public health, and nine years building documentation and knowledge systems for a product that grew from zero to 1.5 million users. Find where the information breaks down — then fix it.</p>
     </div>
+  </section>
 
-    <div class="sample-card">
-      <p class="sample-type">Troubleshooting Guide</p>
-      <h3>Getting a Blank Reply to Commands</h3>
-      <p>Troubleshooting documentation requires a specific skill: diagnosing the problem from the user's perspective, not the developer's. This article walks users through the most common causes and fixes without overwhelming them.</p>
-      <a href="https://warmind.io/article/getting-a-blank-reply-to-commands" target="_blank" class="sample-link">Read the article</a>
+  <!-- STATS -->
+  <section class="stats">
+    <div class="wrap stats-grid">
+      <div class="stat"><span class="num">1.5M+</span><span class="lbl">Platform users served</span></div>
+      <div class="stat"><span class="num">10+</span><span class="lbl">Years teaching &amp; documenting</span></div>
+      <div class="stat"><span class="num">10</span><span class="lbl">Support volunteers trained</span></div>
     </div>
+  </section>
 
-    <div class="sample-card">
-      <p class="sample-type">Feature Documentation</p>
-      <h3>Leaderboards & the Rank Command</h3>
-      <p>Feature explainer documentation covering a complex, data-heavy feature. Demonstrates the ability to make analytical tools approachable for a general audience.</p>
-      <a href="https://warmind.io/article/leaderboards-and-the-rank-command" target="_blank" class="sample-link">Read the article</a>
+  <!-- SAMPLES -->
+  <section class="samples">
+    <div class="wrap">
+      <div class="eyebrow">Work Samples — Knowledge Base &amp; Documentation</div>
+      <h2>Documentation<br>that actually helps.</h2>
+      <div class="card-grid">
+
+        <article class="card featured">
+          <div class="kicker">Featured — Step-by-Step User Guide</div>
+          <h3>How to Use Slash Commands</h3>
+          <p>A comprehensive walkthrough for users of all technical levels — covering multiple input methods, edge cases, platform differences (mobile vs. PC), and troubleshooting. Written for a community of 1.5M+ users, it anticipates confusion before it happens and resolves it cleanly.</p>
+          <a class="read" href="https://warmind.io/article/slash-commands" target="_blank" rel="noopener">Read the article →</a>
+        </article>
+
+        <article class="card">
+          <div class="kicker">Onboarding Documentation</div>
+          <h3>Registration Guide</h3>
+          <p>First-touch documentation for new users — the most critical piece of any knowledge base. Clear, welcoming, and designed to get users up and running without friction.</p>
+          <a class="read" href="https://warmind.io/article/registration" target="_blank" rel="noopener">Read the article →</a>
+        </article>
+
+        <article class="card">
+          <div class="kicker">Troubleshooting Guide</div>
+          <h3>Getting a Blank Reply to Commands</h3>
+          <p>Troubleshooting takes a specific skill: diagnosing the problem from the user's perspective, not the developer's. This article walks users through the common causes and fixes without overwhelming them.</p>
+          <a class="read" href="https://warmind.io/article/getting-a-blank-reply-to-commands" target="_blank" rel="noopener">Read the article →</a>
+        </article>
+
+        <article class="card">
+          <div class="kicker">Feature Documentation</div>
+          <h3>Leaderboards &amp; the Rank Command</h3>
+          <p>Feature-explainer documentation covering a complex, data-heavy feature — making an analytical tool approachable for a general audience.</p>
+          <a class="read" href="https://warmind.io/article/leaderboards-and-the-rank-command" target="_blank" rel="noopener">Read the article →</a>
+        </article>
+
+        <article class="card">
+          <div class="kicker">Permissions &amp; Admin Documentation</div>
+          <h3>Who Does Charlemagne Consider an Administrator?</h3>
+          <p>Edge-case documentation for a nuanced permission system — the kind of question that floods support channels when left unanswered. Precise, direct, and written to close the loop.</p>
+          <a class="read" href="https://warmind.io/article/who-does-charlemagne-consider-an-administrator" target="_blank" rel="noopener">Read the article →</a>
+        </article>
+
+        <article class="card">
+          <div class="kicker">Video Documentation</div>
+          <h3>Platform Tutorial Video</h3>
+          <p>Multimedia documentation translating written guides into an engaging video walkthrough. Scripted, narrated, and produced independently for a platform-wide audience.</p>
+          <a class="read" href="https://www.youtube.com/watch?v=rkClwQjaOKs&t=674s" target="_blank" rel="noopener">Watch the video →</a>
+        </article>
+
+      </div>
     </div>
+  </section>
 
-    <div class="sample-card">
-      <p class="sample-type">Permissions & Admin Documentation</p>
-      <h3>Who Does Charlemagne Consider an Administrator?</h3>
-      <p>Edge-case documentation for a nuanced permission system — the kind of question that floods support channels when left unanswered. Precise, direct, and written to close the loop.</p>
-      <a href="https://warmind.io/article/who-does-charlemagne-consider-an-administrator" target="_blank" class="sample-link">Read the article</a>
+  <!-- OUTCOMES -->
+  <section class="outcomes">
+    <div class="wrap out-grid">
+      <div class="body">
+        <h2>Measured outcomes &amp; institutional writing</h2>
+        <p>Good education work isn't just clear — it's proven. As a Texas A&amp;M AgriLife Extension agent, I taught federally funded nutrition programs and measured whether they actually changed behavior, using pre/post evaluation.</p>
+        <p>The official county report linked here shows that work: real, documented outcomes written to agency standards for program evaluators and state and federal stakeholders.</p>
+      </div>
+      <div class="report-card">
+        <span class="eyebrow">Official Report</span>
+        <h3>CEA Annual Achievement Report</h3>
+        <div class="sub">Texas A&amp;M AgriLife Extension · Taylor County · 2024</div>
+        <ul>
+          <li>Program planning and community needs assessment</li>
+          <li>Multi-site program implementation documentation</li>
+          <li>Evaluation methodology and outcome reporting</li>
+          <li>Stakeholder and partner coordination records</li>
+          <li>Professional development and compliance reporting</li>
+        </ul>
+        <a class="view" href="Lora%20Webb%20CEA%20Achievement%20Report.pdf" target="_blank" rel="noopener">View the full report →</a>
+      </div>
     </div>
+  </section>
 
-    <div class="sample-card">
-      <p class="sample-type">Video Documentation</p>
-      <h3>Platform Tutorial Video</h3>
-      <p>Multimedia documentation demonstrating the ability to translate written guides into engaging video walkthroughs. Scripted, narrated, and produced independently for a platform-wide audience.</p>
-      <a href="https://www.youtube.com/watch?v=rkClwQjaOKs&t=674s" target="_blank" class="sample-link">Watch the video</a>
+  <!-- FOOTER -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="name">Lora <em>Webb</em></div>
+      <div class="links">
+        <a href="mailto:lora.o.webb@gmail.com">lora.o.webb@gmail.com</a>
+        <a href="https://www.linkedin.com/in/lora-webb" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="tel:8062808006">806.280.8006</a>
+      </div>
     </div>
-
-  </div>
-</section>
-
-<!-- REPORT SECTION -->
-<section class="report-section">
-  <div class="report-inner">
-    <div>
-      <h2>Formal & Institutional Writing</h2>
-      <p>Technical writing isn't always user-facing. Equally important is the ability to write for institutional audiences — program evaluators, elected officials, state and federal stakeholders — with precision and clarity.</p>
-      <p>The CEA Annual Achievement Report linked here demonstrates formal report writing, program evaluation documentation, and outcome reporting for a federally funded public health program.</p>
-    </div>
-    <div class="report-card">
-      <h4>CEA Annual Achievement Report</h4>
-      <p class="org">Texas A&M AgriLife Extension · Taylor County · 2024</p>
-<p style="font-size:12px; color:var(--muted); font-style:italic; margin-top:4px;">Document formatted per agency template requirements.</p>
-      <ul>
-        <li>In-depth program planning and needs assessment</li>
-        <li>Multi-site program implementation documentation</li>
-        <li>Evaluation methodology and outcome reporting</li>
-        <li>Stakeholder and partner coordination records</li>
-        <li>Professional development and compliance reporting</li>
-        <li>Recipient: Exemplary Excellence Award, BLT Program Director</li>
-      </ul>
-      <a href="https://lorawebb.github.io/Lora%20Webb%20CEA%20Achievement%20Report.pdf" target="_blank" class="sample-link">View the full report</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-name">Lora <em>Webb</em></div>
-  <div class="footer-links">
-    <a href="mailto:lora.o.webb@gmail.com">lora.o.webb@gmail.com</a>
-    <a href="https://www.linkedin.com/in/lora-webb" target="_blank">LinkedIn</a>
-    <a href="tel:8062808006">806.280.8006</a>
-  </div>
-</footer>
+  </footer>
 
 </body>
 </html>
