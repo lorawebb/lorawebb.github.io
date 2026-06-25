@@ -144,7 +144,7 @@
 
   /* ---------- OUTCOMES ---------- */
   .outcomes{ background:var(--pale); padding:6rem 0; }
-  .out-grid{ display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+  .out-grid{ display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
   .outcomes h2{ font-family:var(--display); font-weight:900; font-size:clamp(2rem,4.5vw,3rem); line-height:1.08; margin-bottom:1.4rem; }
   .outcomes .body p{ color:var(--mauve); margin-bottom:1rem; max-width:46ch; }
   .report-card{ background:var(--white); border:1px solid rgba(122,90,106,.22); border-radius:12px; padding:2.2rem; }
@@ -156,6 +156,10 @@
   .report-card li:first-child{ border-top:none; }
   .report-card .view{ display:inline-block; margin-top:1.4rem; color:var(--pink); font-weight:700; font-size:.9rem; text-decoration:none; }
   .report-card .view:hover{ color:var(--pink-bright); }
+  .report-stack{ display:flex; flex-direction:column; gap:1.4rem; }
+  .report-card.secondary{ background:rgba(255,255,255,.6); }
+  .report-card.secondary h3{ font-size:1.25rem; }
+  .report-card .note{ color:var(--mauve); font-size:.92rem; margin:.2rem 0 0; }
 
   /* ---------- FOOTER ---------- */
   .foot{ background:var(--plum); color:var(--white); padding:4.5rem 0; }
@@ -269,21 +273,31 @@
     <div class="wrap out-grid">
       <div class="body">
         <h2>Measured outcomes &amp; institutional writing</h2>
-        <p>Good education work isn't just clear — it's proven. As a Texas A&amp;M AgriLife Extension agent, I taught federally funded nutrition programs and measured whether they actually changed behavior, using pre/post evaluation.</p>
-        <p>The official county report linked here shows that work: real, documented outcomes written to agency standards for program evaluators and state and federal stakeholders.</p>
+        <p>Good education work isn't just clear — it's proven, and sometimes it has to fit strict institutional rules. As a Texas A&amp;M AgriLife Extension agent, I taught federally funded nutrition programs, measured whether they changed behavior, and reported the results two ways.</p>
+        <p>The Impact Summary shows the outcomes in plain, visual terms. The official CEA report shows the same work written to a required state template — the formal, compliance-bound version institutional stakeholders depend on.</p>
       </div>
-      <div class="report-card">
-        <span class="eyebrow">Official Report</span>
-        <h3>CEA Annual Achievement Report</h3>
-        <div class="sub">Texas A&amp;M AgriLife Extension · Taylor County · 2024</div>
-        <ul>
-          <li>Program planning and community needs assessment</li>
-          <li>Multi-site program implementation documentation</li>
-          <li>Evaluation methodology and outcome reporting</li>
-          <li>Stakeholder and partner coordination records</li>
-          <li>Professional development and compliance reporting</li>
-        </ul>
-        <a class="view" href="Lora%20Webb%20CEA%20Achievement%20Report.pdf" target="_blank" rel="noopener">View the full report →</a>
+
+      <div class="report-stack">
+        <div class="report-card">
+          <span class="eyebrow">Program Impact Summary</span>
+          <h3>Better Living for Texans — Impact Summary</h3>
+          <div class="sub">Texas A&amp;M AgriLife Extension · Taylor County</div>
+          <ul>
+            <li>Produce on the plate rose from 27% to 46% of participants</li>
+            <li>80% rated new skills “good” or “excellent” — a 52-point gain</li>
+            <li>40% began meal-planning before shopping — an 11-point gain</li>
+            <li>Pre/post survey evaluation across each series</li>
+          </ul>
+          <a class="view" href="BLT-Summary.pdf" target="_blank" rel="noopener">View the impact summary →</a>
+        </div>
+
+        <div class="report-card secondary">
+          <span class="eyebrow">Official State Report</span>
+          <h3>CEA Annual Achievement Report</h3>
+          <div class="sub">Texas A&amp;M AgriLife Extension · Taylor County · 2024</div>
+          <p class="note">Written to a required state reporting template — the formal, standards-bound program evaluation that institutional and compliance audiences depend on.</p>
+          <a class="view" href="Lora%20Webb%20CEA%20Achievement%20Report.pdf" target="_blank" rel="noopener">View the full report →</a>
+        </div>
       </div>
     </div>
   </section>
